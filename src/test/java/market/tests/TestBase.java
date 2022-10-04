@@ -8,6 +8,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.util.Map;
+
 public class TestBase {
 
     private static final String REMOTE_URL = System.getProperty("selenide.remote");
@@ -18,13 +20,15 @@ public class TestBase {
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("enable-automation");
-        options.addArguments("--window-size=1920,1080");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-extensions");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--disable-gpu");
-        options.setCapability("enableVNC", true);
-        options.setCapability("enableVideo", true);
+        options.setCapability("selenoid:options", Map.<String, Object>of(
+                "enableVNC", true,
+                "enableVideo", true,
+                "enableLog", true
+        ));
 
         Configuration.browserCapabilities = options;
         Configuration.baseUrl = "https://market.kz/";
