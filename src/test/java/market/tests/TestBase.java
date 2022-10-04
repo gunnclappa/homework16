@@ -7,7 +7,6 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.Map;
 
@@ -19,24 +18,20 @@ public class TestBase {
     static void configure() {
         SelenideLogger.addListener("allure", new AllureSelenide());
 
-//        ChromeOptions options = new ChromeOptions();
-//        options.addArguments("enable-automation");
-//        options.addArguments("--window-size=1920,1080");
-//        options.addArguments("--no-sandbox");
-//        options.addArguments("--disable-extensions");
-//        options.addArguments("--disable-dev-shm-usage");
-//        options.addArguments("--disable-gpu");
-//        options.setCapability("selenoid:options", Map.<String, Object>of(
-//                "enableVNC", true,
-//                "enableVideo", true,
-//                "enableLog", true
-//        ));
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("enable-automation");
+        options.addArguments("--window-size=1920,1080");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-extensions");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--disable-gpu");
+        options.setCapability("selenoid:options", Map.<String, Object>of(
+                "enableVNC", true,
+                "enableVideo", true,
+                "enableLog", true
+        ));
 
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("enableVNC", true);
-        capabilities.setCapability("enableVideo", true);
-
-        Configuration.browserCapabilities = capabilities;
+        Configuration.browserCapabilities = options;
         Configuration.baseUrl = "https://market.kz/";
         Configuration.timeout = 30000;
         Configuration.pageLoadTimeout = 300000;
