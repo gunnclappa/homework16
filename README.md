@@ -1,11 +1,10 @@
+# Проект по автоматизации тестирования Market.kz
+
 ## :bookmark_tabs: Содержание
 
 * <a href="#stack">Cтек технологий</a>
-
-* <a href="#object">Объекты тестирования</a>
-
+* <a href="#object">Реализованные проверки</a>
 * <a href="#console">Команды запуска тестов</a>
-
 * <a href="#screenshot">Скриншоты и видео</a>
 
   + <a href="#ijjs">InteliJ IDEA, Java, JUnit 5, Selenide</a>
@@ -31,7 +30,12 @@
 </div>
 
 <a id="object"></a>
-## :mag: Объекты тестирования
+## :mag: Реализованные проверки
+- ✓ Проверка поиска объявлений
+- ✓ Проверка открытия категории "Путешествия"
+- ✓ Проверка открытия сайта "Krisha.kz"
+- ✓ Проверка отображения бесплатных объявлений
+- ✓ Проверка существования категории "Смарт-часы"
 
 <a id="console"></a>
 ## :computer: Команды запуска тестов
@@ -47,16 +51,6 @@ test
 > `${WINDOW_SIZE}` - размер окна браузера [ *1024x768* , *1366x768* <sub>(default)</sub> , *1366x768* ]
 >
 > `${REMOTE_DRIVER}` - подключение удаленного браузера для тестов [ *false* , *true* <sub>(default)</sub> ]
-
-<a id="screenshot"></a>
-## :camera_flash: Код и отчётность
-<a id="ijjs"></a>
-#### <a href="https://www.jetbrains.com/idea/"><img alt="InteliJ IDEA" height="50" src="external/logos/Intelij_IDEA.svg" width="50"/>InteliJ IDEA</a><a href="https://www.java.com/"><img alt="Java" height="50" src="external/logos/Java.svg" width="50"/>Java</a><a href="https://junit.org/junit5/"><img alt="JUnit 5" height="50" src="external/logos/JUnit5.svg" width="50"/>JUnit 5</a><a href="https://selenide.org/"><img alt="Selenide" height="50" src="external/logos/Selenide.svg" width="50"/>Selenide</a>
-> *Оформление кода автотестов*
-
-```java
-test
-```
 
 <a id="selenoid"></a>
 #### <a href="https://selenoid.autotests.cloud/video/4a544544d069a501ee461083c9babb79.mp4"><img alt="Selenoid" height="50" src="external/logos/Selenoid.svg" width="50"/>Selenoid</a>
