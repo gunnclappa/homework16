@@ -20,6 +20,7 @@ public class TestBase {
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("enable-automation");
+        options.addArguments("--window-size=1920,1080");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-extensions");
         options.addArguments("--disable-dev-shm-usage");
@@ -34,8 +35,6 @@ public class TestBase {
         Configuration.baseUrl = "https://market.kz/";
         Configuration.timeout = 30000;
         Configuration.pageLoadTimeout = 300000;
-        Configuration.browser = System.getProperty("browser_name", "chrome");
-        Configuration.browserSize = System.getProperty("browser_size", "1920x1080");
 
         if (REMOTE_URL != null) {
             Configuration.remote = "https://user1:1234@" + REMOTE_URL;
