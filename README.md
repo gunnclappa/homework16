@@ -5,11 +5,8 @@
 * <a href="#stack">Cтек технологий</a>
 * <a href="#object">Реализованные проверки</a>
 * <a href="#console">Команды запуска тестов</a>
-* <a href="#screenshot">Скриншоты и видео</a>
-
-  + <a href="#ijjs">InteliJ IDEA, Java, JUnit 5, Selenide</a>
+* <a>Скриншоты и видео</a>
   + <a href="#selenoid">Selenoid</a>
-  + <a href="#gradle">Gradle</a>
   + <a href="#jenkins">Jenkins</a>
   + <a href="#allure">Allure</a>
   + <a href="#telegram">Telegram</a>
@@ -31,101 +28,30 @@
 
 <a id="object"></a>
 ## :mag: Реализованные проверки
-- ✓ Проверка поиска объявлений
-- ✓ Проверка открытия категории "Путешествия"
-- ✓ Проверка открытия сайта "Krisha.kz"
-- ✓ Проверка отображения бесплатных объявлений
-- ✓ Проверка существования категории "Смарт-часы"
+- Проверка поиска объявлений
+- Проверка открытия категории "Путешествия"
+- Проверка открытия сайта "Krisha.kz"
+- Проверка отображения бесплатных объявлений
+- Проверка существования категории "Смарт-часы"
 
 <a id="console"></a>
 ## :computer: Команды запуска тестов
 ```bash
-gradle clean 
+clean 
 test
--Dbrowser=${BROWSER}
--DwindowSize=${WINDOW_SIZE} 
--DremoteWebDriver=${REMOTE_DRIVER}
+-Dselenide.remote=${REMOTE_URL}
 ```
-> `${BROWSER}` - браузер [ *firefox* , *chrome* <sub>(default)</sub> ]
->
-> `${WINDOW_SIZE}` - размер окна браузера [ *1024x768* , *1366x768* <sub>(default)</sub> , *1366x768* ]
->
-> `${REMOTE_DRIVER}` - подключение удаленного браузера для тестов [ *false* , *true* <sub>(default)</sub> ]
 
 <a id="selenoid"></a>
-#### <a href="https://selenoid.autotests.cloud/video/4a544544d069a501ee461083c9babb79.mp4"><img alt="Selenoid" height="50" src="external/logos/Selenoid.svg" width="50"/>Selenoid</a>
-> *Прогон ресурсоемких автотестов на удаленном сервере*
+## <a href="https://selenoid.autotests.cloud/video/4a544544d069a501ee461083c9babb79.mp4"><img alt="Selenoid" height="50" src="external/logos/Selenoid.svg" width="50"/>Selenoid</a>
 
 <video src="https://user-images.githubusercontent.com/110110734/193814550-cef6ecdb-f702-4fa5-a6cf-4cf6cc523097.mp4"
 controls="controls" style="max-width: 730px;" poster="/external/logos/Selenoid.svg">
 Видео не доступно для этого браузера
 </video>
 
-<a id="gradle"></a>
-#### <a href="https://gradle.org/"><img alt="Gradle" height="50" src="external/logos/Gradle.svg" width="50"/>Gradle</a>
-> *Автоматическая сборка проекта и управление зависимостями*
-
-```groovy
-plugins {
-    id 'java'
-    id 'io.qameta.allure' version '2.10.0'
-}
-
-def allureVersion = '2.19.0'
-
-allure {
-    report {
-        version.set(allureVersion)
-    }
-    adapter {
-        aspectjWeaver.set(true)
-        frameworks {
-            junit5 {
-                adapterVersion.set(allureVersion)
-            }
-        }
-    }
-}
-
-repositories {
-    mavenCentral()
-}
-
-compileJava {
-    options.encoding = 'UTF-8'
-}
-compileTestJava {
-    options.encoding = 'UTF-8'
-}
-
-dependencies {
-    testImplementation('org.junit.jupiter:junit-jupiter:5.9.0',
-            'com.codeborne:selenide:6.7.4',
-            'io.qameta.allure:allure-selenide:2.19.0',
-            'org.slf4j:slf4j-simple:2.0.1')
-}
-
-tasks.withType(Test) {
-    systemProperties(System.getProperties())
-    useJUnitPlatform()
-
-    testLogging {
-        lifecycle {
-            events "started", "skipped", "failed", "standard_error", "standard_out"
-            exceptionFormat "short"
-        }
-    }
-}
-
-test {
-    useJUnitPlatform()
-}
-```
-
 <a id="jenkins"></a>
-####  <a href="https://jenkins.autotests.cloud/job/Nurekenov-homework16/"><img alt="Jenkins" height="50" src="external/logos/Jenkins.svg" width="50"/>Jenkins</a>
-> *Решение комплекса задач по сборке проекта, прогону автотестов, получению отчетов и отправке уведомлений по результатам сборки*
-
+##  <a href="https://jenkins.autotests.cloud/job/Nurekenov-homework16/"><img alt="Jenkins" height="50" src="external/logos/Jenkins.svg" width="50"/>Jenkins</a>
   
 <a href="https://jenkins.autotests.cloud/job/Nurekenov-homework16/">
 
@@ -133,8 +59,7 @@ test {
 </a>
 
 <a id="allure"></a>
-#### <a href="https://jenkins.autotests.cloud/job/Nurekenov-homework16/allure//"><img alt="Allure" height="50" src="external/logos/Allure.svg" width="50"/>Allure</a>
-> *Формирование сводного отчета по результам автотестов*
+## <a href="https://jenkins.autotests.cloud/job/Nurekenov-homework16/allure//"><img alt="Allure" height="50" src="external/logos/Allure.svg" width="50"/>Allure</a>
 
 <table>
     <tr>
@@ -164,7 +89,6 @@ test {
 </table>
 
 <a id="telegram"></a>
-#### <a href="https://t.me/MarketKzNotificationBot"><img alt="Telegram" height="50" src="external/logos/Telegram.svg" width="50"/>Telegram</a>
-> *Оперативное предоставление информации о результатах прогона автотестов*
+## <a href="https://t.me/MarketKzNotificationBot"><img alt="Telegram" height="50" src="external/logos/Telegram.svg" width="50"/>Telegram</a>
 
 ![Telegram screenshot](https://user-images.githubusercontent.com/110110734/193813963-0e4ec16a-b6d3-45d3-bf0d-dc90eb689380.png)
