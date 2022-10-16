@@ -1,5 +1,6 @@
 package market.tests;
 
+import market.base.TestBase;
 import market.pages.MainPage;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
