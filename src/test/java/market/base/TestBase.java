@@ -4,7 +4,6 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.junit5.AllureJunit5;
 import io.qameta.allure.selenide.AllureSelenide;
-import market.config.Project;
 import market.helpers.AllureAttachments;
 import market.helpers.DriverSettings;
 import market.helpers.DriverUtils;
@@ -16,7 +15,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import java.util.Objects;
 
 import static com.codeborne.selenide.Configuration.browser;
-
 
 @ExtendWith({AllureJunit5.class})
 public class TestBase {
@@ -41,10 +39,9 @@ public class TestBase {
             AllureAttachments.addBrowserConsoleLogs();
         }
 
-
         Selenide.closeWebDriver();
 
-        if (Project.isVideoOn()) {
+        if (System.getProperty("environment").equals("remote")) {
             AllureAttachments.addVideo(sessionId);
         }
     }

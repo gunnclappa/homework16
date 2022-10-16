@@ -4,9 +4,7 @@ import org.aeonbits.owner.Config;
 
 @Config.LoadPolicy(Config.LoadType.MERGE)
 @Config.Sources({
-        "system:properties",
-        "classpath:local.properties",
-        "classpath:remote.properties"
+        "classpath:${environment}.properties"
 })
 public interface ProjectConfig extends Config {
 
@@ -24,4 +22,7 @@ public interface ProjectConfig extends Config {
 
     @Key("baseUrl")
     String baseUrl();
+
+    @Key("browserVersion")
+    String browserVersion();
 }
