@@ -7,18 +7,17 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 public class DriverSettings {
 
     public static void configure() {
-        Configuration.browser = Project.CONFIG.browserName();
-        Configuration.browserSize = Project.CONFIG.browserSize();
-        Configuration.baseUrl = Project.CONFIG.baseUrl();
 
-        DesiredCapabilities capabilities = new DesiredCapabilities();
+        String typeOfLaunch = "remote"; // Можно поменять на local -> тесты запустятся локально
 
-        if (Project.isRemoteWebDriver()) {
+        Project config = new Project();
+        config.setConfiguration(typeOfLaunch);
+
+        if (typeOfLaunch.equals("remote")) {
+            DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setCapability("enableVNC", true);
             capabilities.setCapability("enableVideo", true);
-            Configuration.remote = Project.CONFIG.remoteUrl();
+            Configuration.browserCapabilities = capabilities;
         }
-
-        Configuration.browserCapabilities = capabilities;
     }
 }
