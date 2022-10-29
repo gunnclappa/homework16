@@ -37,9 +37,14 @@
 <a id="console"></a>
 ## :computer: Команды запуска тестов
 ```bash
-clean 
+clean
 test
--Dselenide.remote=${REMOTE_URL}
+-DremoteUrl=${REMOTE_URL}
+-DbrowserName=${BROWSER_NAME}
+-DbrowserSize=${BROWSER_SIZE}
+-DbaseUrl=${BASE_URL}
+-DvideoStorage=${VIDEO_STORAGE}
+-DbrowserVersion=${BROWSER_VERSION}
 ```
 
 <a id="selenoid"></a>

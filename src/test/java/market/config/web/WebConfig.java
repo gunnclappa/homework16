@@ -1,15 +1,14 @@
-package market.config.web;
+package market.config;
 
 import org.aeonbits.owner.Config;
 
 @Config.LoadPolicy(Config.LoadType.MERGE)
 @Config.Sources({
         "system:properties",
-        "classpath:${env}.properties",
-        "file:~/${env}.properties",
-        "file:./${env}.properties"
+        "classpath:local.properties",
+        "classpath:remote.properties"
 })
-public interface WebConfig extends Config {
+public interface ProjectConfig extends Config {
 
     @Key("browserName")
     String browserName();
@@ -25,7 +24,4 @@ public interface WebConfig extends Config {
 
     @Key("baseUrl")
     String baseUrl();
-
-    @Key("isRemote")
-    boolean isRemote();
 }
