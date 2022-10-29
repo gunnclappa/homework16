@@ -1,7 +1,7 @@
 package market.helpers;
 
 import com.codeborne.selenide.Selenide;
-import market.config.Project;
+import market.config.ProjectConfiguration;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -32,7 +32,7 @@ public class DriverUtils {
     }
 
     public static URL getVideoUrl(final String sessionId) {
-        String videoUrl = Project.CONFIG.videoStorage() + sessionId + ".mp4";
+        String videoUrl = ProjectConfiguration.CONFIG.videoStorage() + sessionId + ".mp4";
 
         try {
             return new URL(videoUrl);
