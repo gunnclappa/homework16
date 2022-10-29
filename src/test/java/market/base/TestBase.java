@@ -4,9 +4,10 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.junit5.AllureJunit5;
 import io.qameta.allure.selenide.AllureSelenide;
-import market.config.Project;
+import market.config.ConfigReader;
+import market.config.ProjectConfiguration;
+import market.config.web.WebConfig;
 import market.helpers.AllureAttachments;
-import market.helpers.DriverSettings;
 import market.helpers.DriverUtils;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -21,9 +22,12 @@ import static com.codeborne.selenide.Configuration.browser;
 @ExtendWith({AllureJunit5.class})
 public class TestBase {
 
+    private static final WebConfig WEB_CONFIG = ConfigReader.Instance.read();
+
     @BeforeAll
     static void beforeAll() {
-        DriverSettings.configure();
+        ProjectConfiguration projectConfiguration = new ProjectConfiguration(WEB_CONFIG);
+        projectConfiguration.webConfig();
     }
 
     @BeforeEach
@@ -41,11 +45,8 @@ public class TestBase {
             AllureAttachments.addBrowserConsoleLogs();
         }
 
-
         Selenide.closeWebDriver();
 
-        if (Project.isVideoOn()) {
-            AllureAttachments.addVideo(sessionId);
-        }
+        AllureAttachments.addVideo(sessionId);
     }
 }
